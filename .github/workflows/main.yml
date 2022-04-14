@@ -1,0 +1,35 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.0.2
+
+      - name: Install dependencies
+        run: make github-init
+
+      - name: Blocklet workflow
+        uses: blocklet/action-workflow@v1
+        with:
+          skip-bundle: false
+          skip-upload: false
+          skip-deploy: true
+          skip-release: false
+          bundle-command: npm run bundle
+          store-endpoint: ${{ secrets.STORE_ENDPOINT_DEV }}
+          store-access-token: ${{ secrets.STORE_ACCESS_TOKEN_DEV }}
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK }}

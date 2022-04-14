@@ -8,9 +8,9 @@
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
 		"clean": "rm -rf build .blocklet",
-		"bundle": "npm run clean && npm run build && bn bundle --zip --create-release",
-		"deploy": "npm run bundle && bn deploy .blocklet/bundle",
-		"upload": "npm run bundle && bn upload .blocklet/release/blocklet.json",
+		"bundle": "npm run clean && npm run build && blocklet bundle --zip --create-release",
+		"deploy": "npm run bundle && blocklet deploy .blocklet/bundle",
+		"upload": "npm run bundle && blocklet upload .blocklet/release/blocklet.json",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
