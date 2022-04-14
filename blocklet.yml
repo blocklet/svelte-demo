@@ -5,9 +5,9 @@ description: Official svelte demo app wrapped as a blocklet
 keywords:
   - demo
   - svelte
-group: dapp
+group: static
 did: z8iZvDqkUT6itFaCDVcLejiEHTqiix5bg1MRK
-main: dist/index.js
+main: build
 author:
   name: wangshijun
   email: wangshijun2010@gmail.com
@@ -17,7 +17,6 @@ repository:
 specVersion: 1.2.4
 logo: logo.png
 files:
-  - dist/**
   - logo.png
   - blocklet.md
   - screenshots
@@ -26,7 +25,7 @@ interfaces:
     name: publicUrl
     path: /
     prefix: '*'
-    port: PORT
+    port: BLOCKLET_PORT
     protocol: http
 community: ''
 documentation: ''
